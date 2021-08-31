@@ -12,9 +12,6 @@
             <router-view></router-view>
           </transition>
         </el-main>
-        <el-footer>
-          <Footer></Footer>
-        </el-footer>
       </el-container>
     </el-container>
     <Scrolltotop></Scrolltotop>
@@ -24,7 +21,6 @@
 <script>
 import Header from '../components/header/Header'
 import Breadcrumb from '../components/breadcrumb/Breadcrumb'
-import Footer from '../components/footer/Footer'
 import Siderbar from '../components/sidebar/Sidebar'
 import Scrolltotop from '../components/scrolltotop/Scrolltotop'
 import ResizeMixin from '@/utils/resizeHandler'
@@ -35,7 +31,6 @@ export default {
   components: {
     Header,
     Breadcrumb,
-    Footer,
     Siderbar,
     Scrolltotop
   },
@@ -61,7 +56,7 @@ export default {
   }
 
   .el-main {
-    background-color: #f5f5f5;
+    background-color: #fff;
     color: #333;
   }
 
