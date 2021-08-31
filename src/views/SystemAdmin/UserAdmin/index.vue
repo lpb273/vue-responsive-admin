@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row :gutter="20" class="top-block">
+    <el-row class="top-block">
       <el-col :xs="24" :sm="12" :lg="6">
         <el-input v-model="input" placeholder="请输入内容"></el-input>
       </el-col>
@@ -15,6 +15,29 @@
           </el-option>
         </el-select>
       </el-col>
+      <el-col :xs="24" :sm="12" :lg="6">
+        <el-select v-model="value" placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </el-col>
+      <el-col :xs="24" :sm="12" :lg="6">
+        <el-button type="primary">主要按钮</el-button>
+        <el-button>默认按钮</el-button>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :xs="24" :sm="12" :lg="12">
+        <el-button type="primary">主要按钮</el-button>
+        <el-button>默认按钮</el-button>
+        <el-button type="warning">警告按钮</el-button>
+        <el-button type="danger">危险按钮</el-button>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -23,7 +46,7 @@
 export default {
   data() {
     return {
-      input: '',
+      input: "",
       options: [
         {
           value: "选项1",
