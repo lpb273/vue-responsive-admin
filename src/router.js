@@ -14,6 +14,21 @@ const Details = () => import(/* webpackChunkName: "tables" */ '@/views/tables/de
 const Setting = () => import(/* webpackChunkName: "tables" */ '@/views/setting/Setting.vue')
 const NotFind = () => import(/* webpackChunkName: "home" */ '@/views/404.vue')
 
+// 系统管理
+const UserAdmin =  import(/* webpackChunkName: "user-admin" */ '@/views/SystemAdmin/UserAdmin') ;
+const ActivationCodeAdmin = import(/* webpackChunkName: "activation-code-admin" */ '@/views/SystemAdmin/ActivationCodeAdmin');
+const ActivationCodeDistribution = import(/* webpackChunkName: "activation-code-distribution" */  '@/views/SystemAdmin/ActivationCodeDistribution');
+const DealerOrder = import(/* webpackChunkName: "dealer-order" */ '@/views/SystemAdmin/DealerOrder');
+// 经销管理
+const MyActivationCode = import(/* webpackChunkName: "my-activation-code" */ '@/views/DistributionAdmin/MyActivationCode');
+// 我的商品
+const Activation = import(/* webpackChunkName: "activation" */ '@/views/MyGoods/Activation');
+const MyGoodsActivationCode = import(/* webpackChunkName: "my-goods-activation-code" */ '@/views/MyGoods/MyActivationCode');
+// 个人中心
+const Settings = import(/* webpackChunkName: "settings" */ '@/views/PersonalCenter/Settings');
+const Address = import(/* webpackChunkName: "address" */ '@/views/PersonalCenter/Address');
+const Password = import(/* webpackChunkName: "password" */ '@/views/PersonalCenter/Password');
+
 Vue.use(Router)
 
 const router = new Router({
@@ -38,7 +53,7 @@ const router = new Router({
     },
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/user-admin',
       name: 'Full',
       component: Full,
       meta: {
@@ -46,6 +61,106 @@ const router = new Router({
         requireLogin: true
       },
       children: [
+        {
+          path: '/user-admin',
+          name: 'UserAdmin',
+          component: UserAdmin,
+          meta: {
+            breadcrumb: '用户管理',
+            title: '用户管理',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/activation-code-admin',
+          name: 'ActivationCodeAdmin',
+          component: ActivationCodeAdmin,
+          meta: {
+            breadcrumb: '激活码管理',
+            title: '激活码管理',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/activation-code-distribution',
+          name: 'ActivationCodeDistribution',
+          component: ActivationCodeDistribution,
+          meta: {
+            breadcrumb: '经销商订购',
+            title: '经销商订购',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/dealer-order',
+          name: 'DealerOrder',
+          component: DealerOrder,
+          meta: {
+            breadcrumb: '激活码分配',
+            title: '激活码分配',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/my-activation-code',
+          name: 'MyActivationCode',
+          component: MyActivationCode,
+          meta: {
+            breadcrumb: '我的激活码',
+            title: '我的激活码',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/activation',
+          name: 'Activation',
+          component: Activation,
+          meta: {
+            breadcrumb: '激活',
+            title: '激活',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/my-goods-activation-code',
+          name: 'MyGoodsActivationCode',
+          component: MyGoodsActivationCode,
+          meta: {
+            breadcrumb: '我的激活码',
+            title: '我的激活码',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/settings',
+          name: 'Settings',
+          component: Settings,
+          meta: {
+            breadcrumb: '基本设置',
+            title: '基本设置',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/address',
+          name: 'Address',
+          component: Address,
+          meta: {
+            breadcrumb: '收获地址',
+            title: '收获地址',
+            requireLogin: true
+          }
+        },
+        {
+          path: '/password',
+          name: 'Password',
+          component: Password,
+          meta: {
+            breadcrumb: '修改密码',
+            title: '修改密码',
+            requireLogin: true
+          }
+        },
         {
           path: '/dashboard',
           name: 'Dashboard',

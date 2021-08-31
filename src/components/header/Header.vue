@@ -1,8 +1,7 @@
 <template>
   <div class="header">
     <div class="logo" :class="{'is-active':isActive}">
-      <img src="@/assets/logo.png" alt="" height="30px">
-      VueEleDemo
+      HNT-admin
     </div>
     <div class="navbar">
       <div class="btn" :class="{'is-active':isActive}" @click="handleMenu">

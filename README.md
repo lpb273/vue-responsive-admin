@@ -30,10 +30,6 @@ npm run build
 - axios请求拦截
 - vuex 状态分模块管理
 
-另外，在以上基础上做了真实登录注册功能，参考：https://www.cnblogs.com/cckui/p/10536122.html
-- Koa2+MongoDB+Redis登录注册
-- 邮箱验证码服务
-
 
 
  
