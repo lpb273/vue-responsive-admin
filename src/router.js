@@ -15,19 +15,19 @@ const Setting = () => import(/* webpackChunkName: "tables" */ '@/views/setting/S
 const NotFind = () => import(/* webpackChunkName: "home" */ '@/views/404.vue')
 
 // 系统管理
-const UserAdmin =  import(/* webpackChunkName: "user-admin" */ '@/views/SystemAdmin/UserAdmin') ;
-const ActivationCodeAdmin = import(/* webpackChunkName: "activation-code-admin" */ '@/views/SystemAdmin/ActivationCodeAdmin');
-const ActivationCodeDistribution = import(/* webpackChunkName: "activation-code-distribution" */  '@/views/SystemAdmin/ActivationCodeDistribution');
-const DealerOrder = import(/* webpackChunkName: "dealer-order" */ '@/views/SystemAdmin/DealerOrder');
+const UserAdmin = () => import(/* webpackChunkName: "user-admin" */ '@/views/SystemAdmin/UserAdmin') ;
+const ActivationCodeAdmin = () => import(/* webpackChunkName: "activation-code-admin" */ '@/views/SystemAdmin/ActivationCodeAdmin');
+const ActivationCodeDistribution = () => import(/* webpackChunkName: "activation-code-distribution" */  '@/views/SystemAdmin/ActivationCodeDistribution');
+const DealerOrder = () => import(/* webpackChunkName: "dealer-order" */ '@/views/SystemAdmin/DealerOrder');
 // 经销管理
-const MyActivationCode = import(/* webpackChunkName: "my-activation-code" */ '@/views/DistributionAdmin/MyActivationCode');
+const MyActivationCode = () => import(/* webpackChunkName: "my-activation-code" */ '@/views/DistributionAdmin/MyActivationCode');
 // 我的商品
-const Activation = import(/* webpackChunkName: "activation" */ '@/views/MyGoods/Activation');
-const MyGoodsActivationCode = import(/* webpackChunkName: "my-goods-activation-code" */ '@/views/MyGoods/MyActivationCode');
+const Activation = () => import(/* webpackChunkName: "activation" */ '@/views/MyGoods/Activation');
+const MyGoodsActivationCode = () => import(/* webpackChunkName: "my-goods-activation-code" */ '@/views/MyGoods/MyActivationCode');
 // 个人中心
-const Settings = import(/* webpackChunkName: "settings" */ '@/views/PersonalCenter/Settings');
-const Address = import(/* webpackChunkName: "address" */ '@/views/PersonalCenter/Address');
-const Password = import(/* webpackChunkName: "password" */ '@/views/PersonalCenter/Password');
+const Settings = () => import(/* webpackChunkName: "settings" */ '@/views/PersonalCenter/Settings');
+const Address = () => import(/* webpackChunkName: "address" */ '@/views/PersonalCenter/Address');
+const Password = () => import(/* webpackChunkName: "password" */ '@/views/PersonalCenter/Password');
 
 Vue.use(Router)
 
