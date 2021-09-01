@@ -3,16 +3,10 @@ import Router from 'vue-router'
 import store from './store/index'
 import Full from '@/containers/Full'
 // 把下面的路由 作懒加载处理
-const Login = () => import(/* webpackChunkName: "users" */ '@/views/users/Login.vue')
-const Register = () => import(/* webpackChunkName: "users" */ '@/views/users/Register.vue')
-const Dashboard = () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/Dashboard.vue')
-const Diagram = () => import(/* webpackChunkName: "charts" */ '@/views/charts/Diagram.vue')
-const Slider = () => import(/* webpackChunkName: "dashboard" */ '@/views/charts/Slider.vue')
-const Tables = () => import(/* webpackChunkName: "tables" */ '@/views/tables/Tables.vue')
-const List = () => import(/* webpackChunkName: "tables" */ '@/views/tables/list/List.vue')
-const Details = () => import(/* webpackChunkName: "tables" */ '@/views/tables/details/Details.vue')
-const Setting = () => import(/* webpackChunkName: "tables" */ '@/views/setting/Setting.vue')
-const NotFind = () => import(/* webpackChunkName: "home" */ '@/views/404.vue')
+const Login = () => import(/* webpackChunkName: "login" */ '@/views/users/Login.vue')
+const Register = () => import(/* webpackChunkName: "register" */ '@/views/users/Register.vue')
+const ForgetPsd = () => import(/* webpackChunkName: "forget-psd" */ '@/views/users/ForgetPsd.vue')
+const NotFind = () => import(/* webpackChunkName: "notfind" */ '@/views/404.vue')
 
 // 系统管理
 const UserAdmin = () => import(/* webpackChunkName: "user-admin" */ '@/views/SystemAdmin/UserAdmin') ;
@@ -41,6 +35,14 @@ const router = new Router({
       component: Login,
       meta: {
         title: '登录'
+      }
+    },
+    {
+      path: '/forget',
+      name: 'ForgetPsd',
+      component: ForgetPsd,
+      meta: {
+        title: '忘记密码'
       }
     },
     {
@@ -160,77 +162,6 @@ const router = new Router({
             title: '修改密码',
             requireLogin: true
           }
-        },
-        {
-          path: '/dashboard',
-          name: 'Dashboard',
-          component: Dashboard,
-          meta: {
-            breadcrumb: 'dashboard',
-            title: 'dashboard',
-            requireLogin: true
-          }
-        },
-        {
-          path: '/charts/diagram',
-          name: 'Diagram',
-          component: Diagram,
-          meta: {
-            breadcrumb: '图表一',
-            title: 'Diagram',
-            requireLogin: true
-          }
-        },
-        {
-          path: '/charts/slider',
-          name: 'Slider',
-          component: Slider,
-          meta: {
-            breadcrumb: '图表二',
-            title: 'Slider',
-            requireLogin: true
-          }
-        },
-        {
-          path: '/tables',
-          redirect: '/tables/list',
-          name: 'Tables',
-          component: Tables,
-          meta: {
-            breadcrumb: '表格',
-            requireLogin: true
-          },
-          children: [
-            {
-              path: '/tables/list',
-              name: 'List',
-              component: List,
-              meta: {
-                title: 'list',
-                breadcrumb: '列表',
-                requireLogin: true
-              }
-            },
-            {
-              path: '/tables/details',
-              name: 'Details',
-              component: Details,
-              meta: {
-                title: 'details',
-                breadcrumb: '详情',
-                requireLogin: true
-              }
-            }
-          ]
-        },
-        {
-          path: '/setting',
-          name: 'Setting',
-          component: Setting,
-          meta: {
-            breadcrumb: '设置',
-            requireLogin: true
-          },
         }
       ]
     },

@@ -6,7 +6,7 @@
     <div class="register-wrapper" v-show="!showLoading">
       <img :src="imgUrl" alt="" width="100%" height="100%">
       <div id="register">
-        <p class="title">Vue-Element-Demo</p>
+        <p class="title">HNT-ADMIN</p>
         <el-form
           :model="ruleForm2"
           status-icon
@@ -42,8 +42,6 @@
 </template>
 
 <script>
-import axios from '../../axios.js'
-import CryptoJS from 'crypto-js' // md5 加密
 import Loading from '@/components/loading/Loading.vue'
 export default {
   name: "Register",
@@ -95,7 +93,7 @@ export default {
     };
     return {
       showLoading: true,
-      imgUrl: require('../../assets/images/bg-img-1.jpg'),
+      imgUrl: require('../../assets/images/bg-img.jpg'),
       ruleForm2: {
         username: "",
         pass: "",
@@ -132,87 +130,13 @@ export default {
         console.log(email)
 
         // 发送验证码
-        axios.userVerify({
-          username: encodeURIComponent(this.ruleForm2.username),
-          email: this.ruleForm2.email
-        }).then((res) => {
-          if (res.status === 200 && res.data && res.data.code === 0) {
-            this.$notify({
-              title: '成功',
-              message: '验证码发送成功，请注意查收。有效期5分钟。',
-              duration: 1000,
-              type: 'success'
-            })
 
-            let time = 300
-            this.buttonText = '已发送'
-            this.isDisabled = true
-            if (this.flag) {
-              this.flag = false;
-              let timer = setInterval(() => {
-                time--;
-                this.buttonText = time + ' 秒'
-                if (time === 0) {
-                  clearInterval(timer);
-                  this.buttonText = '重新获取'
-                  this.isDisabled = false
-                  this.flag = true;
-                }
-              }, 1000)
-            }
-          } else {
-            this.$notify({
-              title: '失败',
-              message: res.data.msg,
-              duration: 1000,
-              type: 'error'
-            })
-          }
-        })
       }
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-
-          axios.userRegister({
-            username: encodeURIComponent(this.ruleForm2.username),
-            password: CryptoJS.MD5(this.ruleForm2.pass).toString(),
-            email: this.ruleForm2.email,
-            code: this.ruleForm2.smscode
-          }).then((res) => {
-            if (res.status === 200) {
-              if (res.data && res.data.code === 0) {
-                this.$notify({
-                  title: '成功',
-                  message: '注册成功。',
-                  duration: 2000,
-                  type: 'success'
-                })
-                setTimeout(() => {
-                  this.$router.push({
-                    path: '/login'
-                  })
-                }, 500)
-              } else {
-                this.$notify({
-                  title: '错误',
-                  message: res.data.msg,
-                  duration: 2000,
-                  type: 'error'
-                })
-              }
-            } else {
-              this.$notify({
-                title: '错误',
-                message: `服务器请求出错， 错误码${res.status}`,
-                duration: 2000,
-                type: 'error'
-              })
-            }
-          })
-
-
+          console.warn(valid);
         } else {
           console.log("error submit!!");
           return false;

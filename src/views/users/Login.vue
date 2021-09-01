@@ -4,9 +4,9 @@
       <Loading></Loading>
     </div>
     <div class="login-wrapper" v-show="!showLoading">
-      <img :src="imgUrl" alt="" width="100%" height="100%">
+      <img :src="imgUrl" alt="" width="100%" height="100%" />
       <div class="login">
-        <p class="title">Vue-Element-Demo</p>
+        <p class="title">HNT-ADMIN</p>
         <el-form
           :model="ruleForm"
           status-icon
@@ -15,14 +15,46 @@
           label-width="0"
           class="demo-ruleForm"
         >
-          <el-form-item prop="name">
-            <el-input v-model="ruleForm.name" auto-complete="off" placeholder="请输入用户名"></el-input>
-          </el-form-item>
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="24">
+              <el-form-item prop="name">
+                <el-input
+                  v-model="ruleForm.name"
+                  auto-complete="off"
+                  placeholder="请输入用户名"
+                ></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :xs="24" :sm="24" :lg="24">
+              <el-form-item prop="auto">
+                <el-row>
+                  <el-col :xs="12" :sm="12" :lg="12">
+                    <el-checkbox v-model="ruleForm.auto">自动登录</el-checkbox>
+                  </el-col>
+                  <el-col :xs="12" :sm="12" :lg="12" class="flex-row-right-align-center">
+                    <el-button type="text" @click="changePassword">忘记密码</el-button>
+                  </el-col>
+                </el-row>
+              </el-form-item>
+            </el-col>
+          </el-row>
           <el-form-item prop="pass">
-            <el-input type="password" v-model="ruleForm.pass" auto-complete="off" placeholder="输入密码"></el-input>
+            <el-input
+              type="password"
+              v-model="ruleForm.pass"
+              auto-complete="off"
+              placeholder="输入密码"
+            ></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="login('ruleForm')" style="width:100%;">登录</el-button>
+            <el-button
+              type="primary"
+              @click="login('ruleForm')"
+              style="width: 100%"
+              >登录</el-button
+            >
             <p class="register" @click="gotoRegist">没有账户？立即注册</p>
           </el-form-item>
         </el-form>
@@ -32,83 +64,94 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-// import axios from 'axios'
-import Loading from '@/components/loading/Loading.vue'
+import { mapMutations } from "vuex";
+import Loading from "@/components/loading/Loading.vue";
+import { login } from "@/http";
+
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
-    Loading
+    Loading,
   },
   data() {
     let checkName = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入用户名'))
+      if (value === "") {
+        callback(new Error("请输入用户名"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     let validatePass = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请输入密码"))
+        callback(new Error("请输入密码"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     return {
       showLoading: true,
-      imgUrl: require('../../assets/images/bg-img-1.jpg'),
+      imgUrl: require("../../assets/images/bg-img.jpg"),
       ruleForm: {
-        name: '',
-        pass: ''
+        name: "",
+        pass: "",
+        auto: false,
       },
       rules: {
-        name: [{ validator: checkName, trigger: 'change' }],
-        pass: [{ validator: validatePass, trigger: 'change' }],
-      }
-    }
+        name: [{ validator: checkName, trigger: "change" }],
+        pass: [{ validator: validatePass, trigger: "change" }],
+      },
+    };
   },
-  mounted () {
-    let bgImg = new Image()
-    bgImg.src = this.imgUrl
+  mounted() {
+    let bgImg = new Image();
+    bgImg.src = this.imgUrl;
     bgImg.onerror = () => {
-      console.log('img onerror')
-    }
-    bgImg.onload = () => { // 图片加载成功后 去除loading
-      this.showLoading = false
-    }
+      console.log("img onerror");
+    };
+    bgImg.onload = () => {
+      // 图片加载成功后 去除loading
+      this.showLoading = false;
+    };
   },
   methods: {
     ...mapMutations({
-      bindLogin: 'BIND_LOGIN',
-      saveUser: 'SAVE_USER'
+      bindLogin: "BIND_LOGIN",
+      saveUser: "SAVE_USER",
     }),
     login(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.bindLogin(this.ruleForm.name)
-          this.saveUser(this.ruleForm.name)
+          this.bindLogin(this.ruleForm.name);
+          this.saveUser(this.ruleForm.name);
+          login({
+            a: 1,
+          });
           this.$notify({
-            title: '成功',
-            message: '恭喜，登录成功。',
+            title: "成功",
+            message: "恭喜，登录成功。",
             duration: 1000,
-            type: 'success'
-          })
+            type: "success",
+          });
           setTimeout(() => {
             this.$router.push({
-              path: '/'
-            })
-          }, 500)
+              path: "/",
+            });
+          }, 500);
         }
-      })
+      });
     },
-    gotoRegist () {
+    gotoRegist() {
       this.$router.push({
-        path: '/register'
-      })
+        path: "/register",
+      });
+    },
+    changePassword() {
+      this.$router.push({
+        path: "/forget",
+      });
     }
-  }
-}
+  },
+};
 </script>
 <style scoped>
 .loading-wrapper {
@@ -149,7 +192,7 @@ export default {
   margin: 10px;
   text-align: center;
 }
-#login-form>input {
+#login-form > input {
   width: 100%;
   height: 34px;
   display: block;
@@ -161,7 +204,7 @@ export default {
   text-indent: 20px;
   font-size: 14px;
 }
-#login-form>button {
+#login-form > button {
   width: 100%;
   height: 34px;
   display: block;

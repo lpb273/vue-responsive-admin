@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from "../../axios.js";
 export default {
   name: "Setting",
   data() {
@@ -29,48 +28,7 @@ export default {
     // this.getAllUser()
   },
   methods: {
-    getAllUser() {
-      axios.getAllUser().then(res => {
-        console.log(res);
-        if (res.status === 200 && res.data && res.data.code === 0) {
-          this.tableData = res.data.result;
-        } else {
-          this.$notify({
-            title: "错误",
-            message: res.data.msg,
-            duration: 2000,
-            type: "error"
-          });
-        }
-      });
-    },
-    handleClick(e) {
-      console.log(e.username);
-      axios
-        .delUser({
-          username: e.username
-        })
-        .then(res => {
-          if (res.status === 200 && res.data && res.data.code === 0) {
-            this.$notify({
-              title: "成功",
-              message: res.data.msg,
-              duration: 2000,
-              type: "error"
-            });
-            this.tableData = this.tableData.filter(
-              val => val.username !== e.username
-            );
-          } else {
-            this.$notify({
-              title: "错误",
-              message: res.data.msg,
-              duration: 2000,
-              type: "error"
-            });
-          }
-        });
-    }
+
   }
 };
 </script>

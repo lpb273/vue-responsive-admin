@@ -45,7 +45,8 @@ import {
   Upload,
   RadioGroup,
   Radio,
-  Avatar
+  Avatar,
+  Checkbox,
 } from 'element-ui'
 
 Vue.use(Container)
@@ -90,6 +91,7 @@ Vue.use(OptionGroup)
 Vue.use(RadioGroup)
 Vue.use(Radio)
 Vue.use(Avatar)
+Vue.use(Checkbox)
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
