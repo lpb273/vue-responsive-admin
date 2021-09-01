@@ -13,11 +13,6 @@
     <br />
     <br />
     <br />
-    <h4 style="font-size: 20px;">微信小程序扫码体验</h4>
-    <div style="padding: 20px; text-align: center">
-      <img src="@/assets/logo.png" alt height="150px" />
-      <img src="@/assets/lajifenlei.png" alt height="150px" />
-    </div>
   </div>
 </template>
 

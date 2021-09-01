@@ -44,7 +44,8 @@ import {
   CarouselItem,
   Upload,
   RadioGroup,
-  Radio
+  Radio,
+  Avatar
 } from 'element-ui'
 
 Vue.use(Container)
@@ -88,6 +89,7 @@ Vue.use(Option)
 Vue.use(OptionGroup)
 Vue.use(RadioGroup)
 Vue.use(Radio)
+Vue.use(Avatar)
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert

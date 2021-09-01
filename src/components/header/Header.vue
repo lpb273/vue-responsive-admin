@@ -1,15 +1,19 @@
 <template>
   <div class="header">
-    <div class="logo" :class="{'is-active':isActive}">
-      HNT-admin
+    <div class="logo flex-row-center-align-center" :class="{'is-active':isActive}">
+      HNT
     </div>
     <div class="navbar">
-      <div class="btn" :class="{'is-active':isActive}" @click="handleMenu">
-        <span :class="menuBtn"></span>
+      <div class="btn flex-align-center" :class="{'is-active':isActive}" @click="handleMenu">
+        <!-- <span :class="menuBtn"></span> -->
+        <i class="el-icon-s-unfold" style="font-size:28px"></i>
       </div>
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" class="">
         <span class="el-dropdown-link">
-          {{this.$store.getters.username}}<i class="el-icon-arrow-down el-icon--right"></i>
+          <el-avatar size="small" :src="circleUrl"></el-avatar>
+          <span class="dropdown-menu">
+           {{this.$store.getters.username}}<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item @click.native="logout">退出 </el-dropdown-item>
@@ -25,7 +29,8 @@ export default {
   name: 'Header',
   data () {
     return {
-      menuBtn: 'el-icon-newfont-caidan'
+      menuBtn: 'el-icon-newfont-caidan',
+      circleUrl: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png'
     }
   },
   computed: {
@@ -63,13 +68,12 @@ export default {
     width 100%
     height 50px
     display flex
-    background #36a9e1
+    background rgb(84, 92, 100)
     .logo
       width 200px
       height 50px
-      background #1e8fc6
+      background rgba(0, 40, 77, 1)
       color #fff
-      text-indent 15px
       font-size 18px
       line-height 50px
       font-weight 600
@@ -108,5 +112,9 @@ export default {
       width: 0;
       overflow: hidden;
     }
+  }
+  .dropdown-menu{
+    position relative;
+    top -10px
   }
 </style>
