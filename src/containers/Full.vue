@@ -5,7 +5,7 @@
     </el-header>
     <el-container>
       <Siderbar></Siderbar>
-      <el-container>
+      <el-container class="content">
         <el-main>
           <Breadcrumb></Breadcrumb>
           <transition name="fade-transform" mode="out-in">

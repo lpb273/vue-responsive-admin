@@ -11,7 +11,7 @@
     >
       <el-submenu index="/system">
         <template slot="title">
-          <i class="el-icon-view"></i>
+          <i class="el-icon-s-home"></i>
           <span slot="title">系统管理</span>
         </template>
         <el-menu-item index="/user-admin">用户管理</el-menu-item>
@@ -23,14 +23,14 @@
       </el-submenu>
       <el-submenu index="/distribution">
         <template slot="title">
-          <i class="el-icon-location-outline"></i>
+          <i class="el-icon-s-order"></i>
           <span slot="title">经销管理</span>
         </template>
         <el-menu-item index="/my-activation-code">我的激活码</el-menu-item>
       </el-submenu>
       <el-submenu index="/goods">
         <template slot="title">
-          <i class="el-icon-location-outline"></i>
+          <i class="el-icon-s-goods"></i>
           <span slot="title">我的商品</span>
         </template>
         <el-menu-item index="/activation">激活</el-menu-item>
@@ -38,7 +38,7 @@
       </el-submenu>
       <el-submenu index="/user">
         <template slot="title">
-          <i class="el-icon-setting"></i>
+          <i class="el-icon-user-solid"></i>
           <span slot="title">个人中心</span>
         </template>
         <el-menu-item index="/settings">基本设置</el-menu-item>
@@ -83,12 +83,10 @@ export default {
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
-  min-height: 100vh;
   height: 100%;
 }
 
 .el-menu-vertical-demo {
-  min-height: 100vh;
   height: 100%;
 }
 

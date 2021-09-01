@@ -68,6 +68,7 @@
         tooltip-effect="dark"
         style="width: 100%"
         @selection-change="handleSelectionChange"
+        :header-cell-style="{background:'#eef1f6',color:'#606266'}"
       >
         <el-table-column type="selection" width="55"> </el-table-column>
         <el-table-column label="用户邮箱" width="120">
@@ -85,18 +86,34 @@
         </el-table-column>
         <el-table-column label="操作" width="150">
           <template slot-scope="scope">
-            <el-button type="text">修改</el-button>
-            <el-button type="text">删除</el-button>
-            <el-button type="text">停用</el-button>
+            <el-button type="text" @click="changeUserInfo(scope)"
+              >修改</el-button
+            >
+            <el-button type="text" @click="deleteItem(scope)">删除</el-button>
+            <el-button type="text" @click="disabledItem(scope)">停用</el-button>
           </template>
         </el-table-column>
       </el-table>
     </el-row>
+    <el-row>
+      <Pagination
+        :total="100"
+        v-on:size-change="sizeChange"
+        v-on:current-change="currentChange"
+      />
+    </el-row>
+    <ChangeUserInfoDialog ref="changeUserInfoDialog" />
   </div>
 </template>
 
 <script>
+import Pagination from "@/components/pagination";
+import ChangeUserInfoDialog from "@/components/dialog/ChangeUserInfo";
 export default {
+  components: {
+    Pagination,
+    ChangeUserInfoDialog,
+  },
   data() {
     return {
       input: "",
@@ -175,6 +192,41 @@ export default {
     },
     handleSelectionChange(val) {
       this.multipleSelection = val;
+    },
+    sizeChange(val) {
+      console.warn(val);
+    },
+    currentChange(val) {
+      console.warn(val);
+    },
+    changeUserInfo(item) {
+      this.$refs.changeUserInfoDialog.show(item);
+    },
+    deleteItem(item) {
+      this.$alert("确定要删除吗", "提示", {
+        confirmButtonText: "确定",
+        showCancelButton: true,
+        showClose: false,
+        callback: (action) => {
+          this.$message({
+            type: "info",
+            message: `action: ${action}`,
+          });
+        },
+      });
+    },
+    disabledItem(item) {
+      this.$alert("确定要停用吗", "提示", {
+        confirmButtonText: "确定",
+        showCancelButton: true,
+        showClose: false,
+        callback: (action) => {
+          this.$message({
+            type: "info",
+            message: `action: ${action}`,
+          });
+        },
+      });
     },
   },
 };

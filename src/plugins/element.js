@@ -42,7 +42,9 @@ import {
   progress,
   Carousel,
   CarouselItem,
-  Upload
+  Upload,
+  RadioGroup,
+  Radio
 } from 'element-ui'
 
 Vue.use(Container)
@@ -84,6 +86,8 @@ Vue.use(Upload)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(OptionGroup)
+Vue.use(RadioGroup)
+Vue.use(Radio)
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
