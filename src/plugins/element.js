@@ -47,6 +47,7 @@ import {
   Radio,
   Avatar,
   Checkbox,
+  Cascader,
 } from 'element-ui'
 
 Vue.use(Container)
@@ -92,6 +93,7 @@ Vue.use(RadioGroup)
 Vue.use(Radio)
 Vue.use(Avatar)
 Vue.use(Checkbox)
+Vue.use(Cascader)
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert
